@@ -1,0 +1,18 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        # usuario administrador que puede hacer cualquier cosa
+        - id: ${JENKINS_NOMBRE_ADMINISTRADOR:-administrador}
+          name: ${JENKINS_NOMBRE_ADMINISTRADOR:-administrador}
+          password: ${JENKINS_PASSWORD_ADMINISTRADOR:-AdministradorTFG2024}
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Administer:${JENKINS_NOMBRE_ADMINISTRADOR:-administrador}"
+        - 'Overall/Read:authenticated'
+
+unclassified:
+  location:
+    url: http://servidor-jenkins:8080
