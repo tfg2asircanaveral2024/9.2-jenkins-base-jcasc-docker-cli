@@ -2,6 +2,8 @@ FROM jenkins/jenkins:latest-jdk17
 
 USER root
 
+RUN apt update && apt install openssh-client git -y
+
 # añadir al usuario Jenkins al grupo 999, para que, cuando se monte un socket a este 
 # contenedor, el usuario Jenkins pueda acceder al socket, evitando que el usuario del 
 # contenedor tenga que ser Root
